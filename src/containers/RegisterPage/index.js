@@ -61,6 +61,7 @@ const RegisterPage = (props) => {
               placeholder="Last Name"
             />
 
+            
             <input 
               name="email"
               type="text"
