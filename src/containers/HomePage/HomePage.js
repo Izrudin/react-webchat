@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './style.css';
+import './homepage.css';
 import Layout from '../../components/Layout/Layout.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRealtimeUsers, updateMessage, getRealtimeConversations } from '../../actions';

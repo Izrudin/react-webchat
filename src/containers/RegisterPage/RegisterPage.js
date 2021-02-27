@@ -4,6 +4,7 @@ import Card from '../../components/UI/Card/Card.js';
 import { signup } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './registerpage.css';
 
 /**
 * @author
