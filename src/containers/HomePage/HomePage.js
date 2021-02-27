@@ -117,7 +117,7 @@ const HomePage = (props) => {
             {
               chatStarted ? 
               <div className="chatControls">
-                <button id="sendMessageBtn" onClick={submitMessage}>Send</button>
+                <input type="button" value="Send" id="sendMessageBtn" onClick={submitMessage}/>
                 <input type="text" 
                   id="sendMessageInput"
                   value={message}
