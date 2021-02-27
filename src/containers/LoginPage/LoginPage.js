@@ -65,7 +65,6 @@ const LoginPage = (props) => {
       </div>
     </Layout>
    )
-
  }
 
 export default LoginPage
