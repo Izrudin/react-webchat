@@ -32,7 +32,6 @@ const RegisterPage = (props) => {
     dispatch(signup(user))
   }
 
-
   if(auth.authenticated){
     return <Redirect to={`/`} />
   }
@@ -61,7 +60,6 @@ const RegisterPage = (props) => {
               placeholder="Last Name"
             />
 
-            
             <input 
               name="email"
               type="text"
@@ -81,15 +79,11 @@ const RegisterPage = (props) => {
             <div>
               <button>Sign up</button>
             </div>
-
-
-
           </form>
         </Card>
       </div>
     </Layout>
    )
-
  }
 
 export default RegisterPage

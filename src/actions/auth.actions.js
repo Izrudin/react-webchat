@@ -1,6 +1,8 @@
 import { auth, firestore } from 'firebase';
 import { authConstanst } from './constants';
 
+// Register a user (signup because its a reserved word in firebase)
+
 export const signup = (user) => {
 
     return async (dispatch) => {
@@ -19,7 +21,7 @@ export const signup = (user) => {
                 displayName: name
             })
             .then(() => {
-                //if you are here means it is updated successfully
+                //if you are here, it means its updated successfully
                 db.collection('users')
                 .doc(data.user.uid)
                 .set({
@@ -30,7 +32,7 @@ export const signup = (user) => {
                     isOnline: true
                 })
                 .then(() => {
-                    //succeful
+                    //successful creation of user
                     const loggedInUser = {
                         firstName: user.firstName,
                         lastName: user.lastName,
@@ -56,12 +58,10 @@ export const signup = (user) => {
         .catch(error => {
             console.log(error);
         })
-
-
     }
-
-
 }
+
+// Login
 
 export const signin = (user) => {
     return async dispatch => {
@@ -71,7 +71,6 @@ export const signin = (user) => {
         .signInWithEmailAndPassword(user.email, user.password)
         .then((data) => {
             console.log(data);
-
 
             const db = firestore();
             db.collection('users')
