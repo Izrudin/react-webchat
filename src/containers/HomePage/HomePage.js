@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import Layout from '../../components/Layout';
+import Layout from '../../components/Layout/Layout.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRealtimeUsers, updateMessage, getRealtimeConversations } from '../../actions';
 
-
 const User = (props) => {
-
 
   const {user, onClick} = props;
 
@@ -34,7 +32,6 @@ const HomePage = (props) => {
   const [userUid, setUserUid] = useState(null);
   let unsubscribe;
 
-
   useEffect(() => {
 
     unsubscribe = dispatch(getRealtimeUsers(auth.uid))
@@ -46,9 +43,6 @@ const HomePage = (props) => {
     })
   });
 
-  //console.log(user);
-
-  //componentWillUnmount
   useEffect(() => {
     return () => {
       //cleanup
@@ -56,7 +50,6 @@ const HomePage = (props) => {
 
     }
   });
-
 
   const initChat = (user) => {
 
@@ -78,7 +71,6 @@ const HomePage = (props) => {
       message
     }
 
-
     if(message !== ""){
       dispatch(updateMessage(msgObj))
       .then(() => {
@@ -94,10 +86,7 @@ const HomePage = (props) => {
   return (
     <Layout>
       <section className="container">
-
         <div className="listOfUsers">
-
-
           {
             user.users.length > 0 ?
             user.users.map(user => {
@@ -111,21 +100,16 @@ const HomePage = (props) => {
             }) : null
           }
 
-            
-                    
         </div>
-
         <div className="chatArea">
             
             <div className="chatHeader"> 
             {
-              
               chatStarted ? chatUser : ''
             }
             </div>
             <div className="messageSections">
                 {
-                  
                   chatStarted ? 
                   user.conversations.map(con =>
                     <div style={{ textAlign: con.user_uid_1 === auth.uid ? 'right' : 'left' }}>
@@ -133,8 +117,6 @@ const HomePage = (props) => {
                   </div>)
                   : null
                 }
-                
-
             </div>
             {
               chatStarted ? 
@@ -147,7 +129,6 @@ const HomePage = (props) => {
                 <button onClick={submitMessage}>Send</button>
             </div> : null
             }
-            
         </div>
     </section>
   </Layout>

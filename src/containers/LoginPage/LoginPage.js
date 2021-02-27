@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Layout from '../../components/Layout';
-import Card from '../../components/UI/Card';
+import Layout from '../../components/Layout/Layout.js';
+import Card from '../../components/UI/Card/Card.js';
 import { signin } from '../../actions';
 import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,15 +18,6 @@ const LoginPage = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
 
-  // useEffect(() => {
-  //   if(!auth.authenticated){
-  //     dispatch(isLoggedInUser())
-  //   }
-  // }, []);
-
-
-
-
   const userLogin = (e) => {
     e.preventDefault();
 
@@ -40,20 +31,11 @@ const LoginPage = (props) => {
     }
 
     dispatch(signin({ email, password }));
-    
-
-
-
-
   }
-
 
   if(auth.authenticated){
     return <Redirect to={`/`} />
   }
-
-
-
   return(
     <Layout>
       <div className="loginContainer">
@@ -75,12 +57,9 @@ const LoginPage = (props) => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
             />
-
-
             <div>
               <button>Login</button>
             </div>
-
           </form>
         </Card>
       </div>
