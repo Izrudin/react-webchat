@@ -14,10 +14,6 @@ const Header = (props) => {
   const auth = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
-  // const logout = () => {
-  //   dispatch(logout())
-  // }
-
   return(
     <header className="header">
         <div style={{display: 'flex'}}>
@@ -31,8 +27,6 @@ const Header = (props) => {
               </ul> : null
             }
               
-
-            
         </div>
           <div style={{margin: '20px 0', color: '#fff', fontWeight: 'bold'}}>
             {auth.authenticated ? `Hi ${auth.firstName} ${auth.lastName}` : ''}
@@ -47,13 +41,9 @@ const Header = (props) => {
                 }}>Logout</Link>
             </li> : null
             }
-          
-            
-             
         </ul>
     </header>
    )
-
  }
 
 export default Header

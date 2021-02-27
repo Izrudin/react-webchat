@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import firebase from 'firebase';
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './store/Store.js';
 
 
 // Your web app's Firebase configuration
