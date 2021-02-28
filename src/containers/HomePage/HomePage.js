@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './homepage.css';
-import Layout from '../../components/Layout/Layout.js';
+import Layout from '../../components/Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRealtimeUsers, updateMessage, getRealtimeConversations } from '../../actions';
 
@@ -47,7 +47,6 @@ const HomePage = (props) => {
     return () => {
       //cleanup
       unsubscribe.then(f => f()).catch(error => console.log(error));
-
     }
   });
 

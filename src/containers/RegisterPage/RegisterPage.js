@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Layout from '../../components/Layout/Layout.js';
-import Card from '../../components/UI/Card/Card.js';
+import Layout from '../../components/Layout/Layout';
+import Card from '../../components/UI/Card/Card';
 import { signup } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
