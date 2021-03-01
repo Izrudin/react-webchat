@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Layout from '../../components/Layout/Layout.js';
-import Card from '../../components/UI/Card/Card.js';
+import Layout from '../../components/Layout/Layout';
+import Card from '../../components/UI/Card/Card';
 import { signin } from '../../actions';
-import './style.css';
+import './loginpage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
