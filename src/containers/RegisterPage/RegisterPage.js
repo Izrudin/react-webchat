@@ -40,48 +40,31 @@ const RegisterPage = (props) => {
   return(
     <Layout>
       <div className="registerContainer">
-        <Card>
-          <form onSubmit={registerUser}>
+        <form onSubmit={registerUser}>
+                <h3>Sign Up</h3>
 
-            <h3>Sign up</h3>
+                <div className="form-group">
+                    <label>First name</label>
+                    <input name="firstName" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" className="form-control" placeholder="First name" />
+                </div>
 
-          <input 
-              name="firstName"
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First Name"
-            />
+                <div className="form-group">
+                    <label>Last name</label>
+                    <input name="lastName" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" className="form-control" placeholder="Last name" />
+                </div>
 
-            <input 
-              name="lastName"
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last Name"
-            />
+                <div className="form-group">
+                    <label>Email address</label>
+                    <input name="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="form-control" placeholder="Enter email" />
+                </div>
 
-            <input 
-              name="email"
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
+                <div className="form-group">
+                    <label>Password</label>
+                    <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} type="text" className="form-control" placeholder="Enter password" />
+                </div>
 
-            <input 
-              name="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-
-            <div>
-              <button>Sign up</button>
-            </div>
-          </form>
-        </Card>
+                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+            </form>
       </div>
     </Layout>
    )

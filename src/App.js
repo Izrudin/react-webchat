@@ -7,6 +7,7 @@ import RegisterPage from './containers/RegisterPage/RegisterPage.js';
 import PrivateRoute from './components/PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { isLoggedInUser } from './actions';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() { 
 

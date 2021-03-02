@@ -39,8 +39,22 @@ const LoginPage = (props) => {
   return(
     <Layout>
       <div className="loginContainer">
-        <Card>
-          <form onSubmit={userLogin}>
+        <form onSubmit={userLogin}>
+                <h3>Sign in</h3>
+
+                <div className="form-group">
+                    <label>Email address</label>
+                    <input name="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Enter email" />
+                </div>
+
+                <div className="form-group">
+                    <label>Password</label>
+                    <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Enter password" />
+                </div>
+
+                <button type="submit" className="btn btn-primary btn-block">Log In</button>
+            </form>
+          {/* <form onSubmit={userLogin}>
             
             <input 
               name="email"
@@ -60,8 +74,7 @@ const LoginPage = (props) => {
             <div>
               <button>Login</button>
             </div>
-          </form>
-        </Card>
+          </form> */}
       </div>
     </Layout>
    )
