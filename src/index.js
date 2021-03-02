@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import firebase from 'firebase';
 import { Provider } from 'react-redux';
 import store from './store/Store.js';
+import "firebase/storage";
 
 
 // Your web app's Firebase configuration
@@ -23,6 +24,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const storage = firebase.storage();
+
 window.store = store;
 
 ReactDOM.render(
@@ -38,3 +41,7 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+export  {
+  storage, firebase as default
+}

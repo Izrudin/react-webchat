@@ -4,6 +4,8 @@ import Card from '../../components/UI/Card/Card.js';
 import { signup } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { storage } from "../../index";
+import FileField from '../../components/FileField.js';
 
 /**
 * @author
@@ -12,31 +14,70 @@ import { Redirect } from 'react-router-dom';
 
 const RegisterPage = (props) => {
 
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
+  
+  const [file, setFile] = useState("");
+  const [url, setURL] = useState("");
 
-
+  const allInputs = {imgUrl: ''}
+  const [imageAsFile, setImageAsFile] = useState('')
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+  const [image, setImage] = useState(null);
+  
   const registerUser = (e) => {
     
     e.preventDefault();
 
     const user = {
-      firstName, lastName, email, password
+      firstName, lastName, email, password, image
     }
+
+    const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+    uploadTask.on("state_changed", console.log, console.error, () => {
+      storage
+        .ref("images")
+        .child(file.name)
+        .getDownloadURL()
+        .then((url) => {
+          setFile(null);
+          setURL(url);
+          
+        });
+    });
     
     dispatch(signup(user))
   }
+
+  function handleChange(e) {
+    setFile(e.target.files[0]);
+  }
+
+ 
+  // function handleUpload(e) {
+  //   e.preventDefault();
+  //   const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+  //   uploadTask.on("state_changed", console.log, console.error, () => {
+  //     storage
+  //       .ref("images")
+  //       .child(file.name)
+  //       .getDownloadURL()
+  //       .then((url) => {
+  //         setFile(null);
+  //         setURL(url);
+  //       });
+  //   });
+  // }
 
 
   if(auth.authenticated){
     return <Redirect to={`/`} />
   }
-
+  
   return(
     <Layout>
       <div className="registerContainer">
@@ -78,11 +119,14 @@ const RegisterPage = (props) => {
               placeholder="Password"
             />
 
+            <div className = "image-wrapper">
+              <img src='' alt="Profile photo - " className="profile-image"/>
+              <input type="file" id="imageInput" onChange={handleChange} value={image}/>
+            </div>
+
             <div>
               <button>Sign up</button>
             </div>
-
-
 
           </form>
         </Card>

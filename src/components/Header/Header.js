@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions';
-
+import { storage } from "../../index";
 /**
 * @author
 * @function Header
@@ -27,12 +27,18 @@ const Header = (props) => {
               </ul> : null
             }
               
-        </div>
-          <div style={{margin: '20px 0', color: '#fff', fontWeight: 'bold'}}>
-            {auth.authenticated ? `Hi ${auth.firstName} ${auth.lastName}` : ''}
           </div>
-        <ul className="menu">
 
+          {/* <Link to="/profile">
+            <img src="https://www.kxan.com/wp-content/uploads/sites/40/2019/07/MGN_1280x720_80820P00-PDQMR.jpg" className="displayUserPic" />
+          </Link> */}
+          <Link to="/profile">
+            <img src="https://www.kxan.com/wp-content/uploads/sites/40/2019/07/MGN_1280x720_80820P00-PDQMR.jpg" className="displayUserPic" />
+            <div style={{ color: '#fff', fontWeight: 'bold'}} className="userName">
+              {auth.authenticated ? `${auth.firstName} ${auth.lastName}` : ''}
+            </div>
+          </Link>
+          <ul className="menu">
             {
               auth.authenticated ?
               <li>

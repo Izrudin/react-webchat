@@ -1,14 +1,14 @@
 import { auth, firestore } from 'firebase';
+import { useState } from 'react';
 import { authConstanst } from './constants';
+import RegisterPage from '../containers/RegisterPage/RegisterPage.js';
+import { storage } from "../index";
 
 export const signup = (user) => {
 
-    return async (dispatch) => {
-
+    return async (dispatch) => {    
         const db = firestore();
-
         dispatch({type: `${authConstanst.USER_LOGIN}_REQUEST`});
-
         auth()
         .createUserWithEmailAndPassword(user.email, user.password)
         .then(data => {
@@ -27,15 +27,19 @@ export const signup = (user) => {
                     lastName: user.lastName,
                     uid: data.user.uid,
                     createdAt: new Date(),
-                    isOnline: true
+                    isOnline: true,
+                    image: user.image
+                    
                 })
                 .then(() => {
+                   
                     //succeful
                     const loggedInUser = {
                         firstName: user.firstName,
                         lastName: user.lastName,
                         uid: data.user.uid,
-                        email: user.email
+                        email: user.email,
+                        image: user.image
                     }
                     localStorage.setItem('user', JSON.stringify(loggedInUser));
                     console.log('User logged in successfully...!');
@@ -176,4 +180,3 @@ export const logout = (uid) => {
 
     }
 }
-
